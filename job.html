@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Search Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: #e5e7eb;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Job Search Portal</h1>
+
+    <input type="text" id="searchInput" placeholder="Search by job title..." />
+
+    <form id="jobForm">
+      <input name="title" placeholder="Job Title" required />
+      <input name="company" placeholder="Company" required />
+      <input name="location" placeholder="Location" required />
+      <input name="salary" placeholder="Salary" required />
+      <textarea name="description" placeholder="Job Description" required></textarea>
+      <button type="submit">Post Job</button>
+    </form>
+
+    <ul id="jobList"></ul>
+  </div>
+
+  <script>
+    let jobs = [
+      { title: "Frontend Developer", company: "TechNova", location: "Bangalore", salary: "₹800,000", description: "Work with React and UI tools." },
+      { title: "Backend Engineer", company: "CodeVerse", location: "Chennai", salary: "₹950,000", description: "Node.js and database management." }
+    ];
+
+    const jobList = document.getElementById("jobList");
+    const searchInput = document.getElementById("searchInput");
+    const jobForm = document.getElementById("jobForm");
+
+    function displayJobs(filteredJobs) {
+      jobList.innerHTML = "";
+      filteredJobs.forEach((job) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>${job.title}</strong> - ${job.company}<br>
+          <em>${job.location}</em> | ${job.salary}<br>
+          ${job.description}
+        `;
+        jobList.appendChild(li);
+      });
+    }
+
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.toLowerCase();
+      const filtered = jobs.filter((job) =>
+        job.title.toLowerCase().includes(keyword)
+      );
+      displayJobs(filtered);
+    });
+
+    jobForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(jobForm);
+      const newJob = {
+        title: formData.get("title"),
+        company: formData.get("company"),
+        location: formData.get("location"),
+        salary: formData.get("salary"),
+        description: formData.get("description")
+      };
+      jobs.push(newJob);
+      jobForm.reset();
+      displayJobs(jobs);
+    });
+
+    displayJobs(jobs);
+  </script>
+</body>
+</html>
