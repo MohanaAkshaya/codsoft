@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      color: #0077cc;
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin: 0.3rem 0;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.5rem 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz: Basic Web Concepts</h1>
+
+    <form>
+      <div class="question">
+        <p>1. What does HTML stand for?</p>
+        <label><input type="radio" name="q1"> HyperText Markup Language</label>
+        <label><input type="radio" name="q1"> Home Tool Markup Language</label>
+        <label><input type="radio" name="q1"> Hyperlinks and Text Markup Language</label>
+      </div>
+
+      <div class="question">
+        <p>2. Which HTML tag is used to define a CSS style?</p>
+        <label><input type="radio" name="q2"> &lt;script&gt;</label>
+        <label><input type="radio" name="q2"> &lt;css&gt;</label>
+        <label><input type="radio" name="q2"> &lt;style&gt;</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
